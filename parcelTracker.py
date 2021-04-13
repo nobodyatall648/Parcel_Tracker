@@ -27,7 +27,8 @@ def poslaju(trackingCode):
         driver = webdriver.Chrome(options=driverOptions)        
         driver.get(domainLink)
         actions = ActionChains(driver)
-       
+
+        print("[*] Start Checking Tracking Code: " + str(trackingID))
         selTrackCode = driver.find_element_by_xpath('//ul[@class="trackList home-widget-ui"]//li[1]')        
         actions.click(selTrackCode).perform()
 
@@ -35,7 +36,7 @@ def poslaju(trackingCode):
         inputTrackCode.clear()
         inputTrackCode.send_keys(trackingID)
         
-        print("[*] Checking " + str(trackingID))        
+        print("[*] Checking: " + str(trackingID))        
         trackingCodeSubmit = driver.find_element_by_xpath('//button[@class="homeTrackSearchButton"]')
         trackingCodeSubmit.click()
 
