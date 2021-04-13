@@ -24,6 +24,7 @@ def poslaju(trackingCode):
         driverOptions.add_argument("--headless")    #hide chrome windows popup
         driverOptions.add_experimental_option("excludeSwitches", ["enable-logging"])
 
+        print("[*] Initializing Chrome Driver")
         driver = webdriver.Chrome(options=driverOptions)        
         driver.get(domainLink)
         actions = ActionChains(driver)
