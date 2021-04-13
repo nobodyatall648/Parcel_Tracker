@@ -26,4 +26,4 @@ Current supported Courier Company
 ```
  Usage:
  
- ![alt text](image/image.png)
+ ![alt text](image/image1.png)
