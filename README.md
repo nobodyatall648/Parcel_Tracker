@@ -23,6 +23,7 @@ format: python3 parcelTracker.py <courier company> <tracking code>
 Current supported Courier Company
 ```
 1) Pos Laju
+2) J&T Express
 ```
  Usage:
 
