@@ -25,5 +25,6 @@ Current supported Courier Company
 1) Pos Laju
 ```
  Usage:
- 
- ![alt text](image/image1.png)
+ ![alt text](image/help.png)
+ ![alt text](image/poslajuPoC.png)
+ ![alt text](image/jtexpressPoC.png)
