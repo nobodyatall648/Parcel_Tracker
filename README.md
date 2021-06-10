@@ -36,4 +36,4 @@ Current supported Courier Company
 
 
 ### J&T Express
- ![alt text](image/jtexpressPoC.png)
+ ![alt text](image/jtexpressPoc.png)
