@@ -131,7 +131,7 @@ def jtexpress(trackingCode):
 
                 #show remarks if status => On Hold
                 if(trackingStatus == "On Hold"):
-                    remark = trackingDetailArr[3].replace('</div>', '').strip()
+                    remark = trackingDetailArr[3].replace('Remark: ', '').replace('</div>', '').strip()
 
                 #append each result into trackingRsl List
                 trackingRsl.append([str(trackingDate), str(trackingTime), str(trackingInfo), str(trackingCity), str(trackingStatus), str(remark)])                                       
