@@ -126,10 +126,15 @@ def jtexpress(trackingCode):
                 trackingDetailArr = str(trackingDetails).split('<br/>')
                 trackingInfo = trackingDetailArr[0].split('\n')[1].strip()
                 trackingCity = trackingDetailArr[1].replace('City :', '').strip()
-                trackingStatus = trackingDetailArr[2].replace('Status : <span style="color:;">', '').replace('Status : <span style="color:green;">', '').replace('</span> </div>', '').strip()
-                                  
+                trackingStatus = trackingDetailArr[2].replace('Status : <span style="color:;">', '').replace('Status : <span style="color:green;">', '').replace('Status : <span style="color:coral;">', '').replace('</span> </div>', '').replace('</span>', '').strip()
+                remark = ""
+
+                #show remarks if status => On Hold
+                if(trackingStatus == "On Hold"):
+                    remark = trackingDetailArr[3].replace('</div>', '').strip()
+
                 #append each result into trackingRsl List
-                trackingRsl.append([str(trackingDate), str(trackingTime), str(trackingInfo), str(trackingCity), str(trackingStatus)])                                       
+                trackingRsl.append([str(trackingDate), str(trackingTime), str(trackingInfo), str(trackingCity), str(trackingStatus), str(remark)])                                       
                 
             
             #check there's result or not          
@@ -139,7 +144,7 @@ def jtexpress(trackingCode):
                 #print tracking result in table
                 print("[*] Check complete print result: ", end="\n\n")
                 print("Tracking Code: " + trackingCode, end="\n\n")
-                print(tabulate(trackingRsl, headers=['Date', 'Time', 'Info', 'City', 'Status']), end="\n\n") 
+                print(tabulate(trackingRsl, headers=['Date', 'Time', 'Info', 'City', 'Status', 'Remark']), end="\n\n") 
 
         except Exception as e:
             print("[!] Something Went Wrong Here.")
