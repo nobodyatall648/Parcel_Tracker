@@ -67,8 +67,15 @@ def poslaju(trackingCode):
                     trackingDate = str(trackingDateTime).split('<span>')[1].replace('</span>', '')
                     trackingTime = str(trackingDateTime).split('<span>')[2].replace('</div>', '').replace('</span>]', '')
                     trackingInfo = str(trackingContent).split('<span>')[1].split('</span>')[0]
+
+                    #check some pos.com.my errors before proceeding 
+                    if(trackingInfo == 'No record found'):
+                        print("[*] No record found.")
+                        sys.exit(0)
+
+                    #continue reformating result
                     trackingLocation = str(trackingLocation).split('class="spanLocation">')[1].split('</span>')[0]
-                    
+                                        
                     #append each result into trackingRsl List
                     trackingRsl.append([str(trackingDate), str(trackingTime), str(trackingInfo), str(trackingLocation)])                                       
 
@@ -82,8 +89,9 @@ def poslaju(trackingCode):
         else:
             print('[!] TrackingList Class Not Found.', end="\n\n")
         
-    except WebDriverException:
+    except WebDriverException as e:
         print('[!] Browser Window Closed.')
+        print(e)
         sys.exit(0)
     except Exception as e:
         print('[!] Something Went Wrong Here!')
@@ -95,7 +103,7 @@ def poslaju(trackingCode):
 def jtexpress(trackingCode):
     trackingURL = "https://www.jtexpress.my/track.php?awbs=" + trackingCode
 
-    requestRet = requests.get(trackingURL)
+    requestRet = requests.get(trackingURL, verify=False)
     
     if(requestRet.status_code == 200):
         try:
